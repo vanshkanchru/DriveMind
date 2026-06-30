@@ -4,6 +4,8 @@ const dotenv = require("dotenv");
 const http = require("http");
 const { Server } = require("socket.io");
 
+const healthRoutes = require("./routes/healthRoutes");
+
 dotenv.config();
 
 const app = express();
@@ -24,6 +26,8 @@ app.get("/", (req, res) => {
     message: "DriveMind backend is running"
   });
 });
+
+app.use("/api/health", healthRoutes);
 
 io.on("connection", (socket) => {
   console.log("Vehicle/dashboard connected:", socket.id);
