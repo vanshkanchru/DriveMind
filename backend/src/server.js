@@ -5,8 +5,10 @@ const http = require("http");
 const { Server } = require("socket.io");
 
 const healthRoutes = require("./routes/healthRoutes");
+const connectDB = require("./config/db");
 
 dotenv.config();
+connectDB();
 
 const app = express();
 const server = http.createServer(app);
