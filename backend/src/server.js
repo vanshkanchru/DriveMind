@@ -8,6 +8,7 @@ const healthRoutes = require("./routes/healthRoutes");
 const telemetryRoutes = require("./routes/telemetryRoutes");
 const experienceRoutes = require("./routes/experienceRoutes");
 const roadRiskRoutes = require("./routes/roadRiskRoutes");
+const graphRoutes = require("./routes/graphRoutes");
 const connectDB = require("./config/db");
 const { connectNeo4j } = require("./config/neo4j");
 const { initSocket } = require("./services/socketService");
@@ -41,6 +42,7 @@ app.use("/api/health", healthRoutes);
 app.use("/api/telemetry", telemetryRoutes);
 app.use("/api/experiences", experienceRoutes);
 app.use("/api/road-risk", roadRiskRoutes);
+app.use("/api/graph", graphRoutes);
 
 io.on("connection", (socket) => {
   console.log("Vehicle/dashboard connected:", socket.id);
