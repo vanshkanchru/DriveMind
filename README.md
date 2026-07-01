@@ -238,6 +238,7 @@ Additional project documentation:
 PROJECT_SUMMARY.md
 docs/project-status.md
 docs/ROADMAP.md
+docs/release-notes/v1-mvp.md
 docs/presentation/hackathon-pitch.md
 docs/demo/demo-script.md
 docs/checklists/demo-recording-checklist.md
@@ -345,6 +346,8 @@ DriveMind/
 │   ├── ml/
 │   ├── presentation/
 │   │   └── hackathon-pitch.md
+│   ├── release-notes/
+│   │   └── v1-mvp.md
 │   ├── ROADMAP.md
 │   ├── github-repo-setup.md
 │   ├── project-status.md
@@ -953,10 +956,26 @@ Final hackathon checklist:
 docs/checklists/hackathon-final-checklist.md
 ```
 
+MVP release notes:
+
+```text
+docs/release-notes/v1-mvp.md
+```
+
 Current completion:
 
 ```text
-Approximately 97–98% complete as a hackathon and portfolio MVP.
+Approximately 98–99% complete as a hackathon and portfolio MVP.
+```
+
+---
+
+## Release Notes
+
+MVP release notes are available here:
+
+```text
+docs/release-notes/v1-mvp.md
 ```
 
 ---
