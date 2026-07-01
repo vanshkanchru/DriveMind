@@ -294,6 +294,9 @@ DriveMind/
 ├── docs/
 │   ├── api/
 │   ├── architecture/
+│   │   ├── assets/
+│   │   ├── system-diagram.md
+│   │   └── system-logic.md
 │   ├── db/
 │   ├── demo/
 │   ├── ml/
@@ -345,6 +348,12 @@ Backend API
                  |
                  v
           React Dashboard
+```
+
+Detailed system diagram notes are available here:
+
+```text
+docs/architecture/system-diagram.md
 ```
 
 ---
