@@ -3,6 +3,7 @@ const Telemetry = require("../models/Telemetry");
 const Experience = require("../models/Experience");
 const { calculateRiskFromTelemetry } = require("../services/riskService");
 const { predictIntent } = require("../services/aiService");
+const { emitRiskAlert } = require("../services/socketService");
 
 const createTelemetry = async (req, res) => {
   try {
@@ -79,6 +80,20 @@ const createTelemetry = async (req, res) => {
         riskScore: riskResult.riskScore,
         confidence: riskResult.confidence,
         recommendedAction: riskResult.recommendedAction
+      });
+
+      emitRiskAlert({
+        type: "risk-alert",
+        vehicleId,
+        roadSegmentId,
+        weather,
+        riskLevel: riskResult.riskLevel,
+        riskScore: riskResult.riskScore,
+        predictedIntent: intentPrediction.predictedIntent,
+        intentConfidence: intentPrediction.confidence,
+        reasons: riskResult.reasons,
+        recommendedAction: riskResult.recommendedAction,
+        message: `High risk detected at ${roadSegmentId}. Recommended action: ${riskResult.recommendedAction}`
       });
     }
 

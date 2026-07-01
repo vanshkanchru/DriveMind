@@ -9,6 +9,7 @@ const telemetryRoutes = require("./routes/telemetryRoutes");
 const experienceRoutes = require("./routes/experienceRoutes");
 const roadRiskRoutes = require("./routes/roadRiskRoutes");
 const connectDB = require("./config/db");
+const { initSocket } = require("./services/socketService");
 
 dotenv.config();
 connectDB();
@@ -22,6 +23,8 @@ const io = new Server(server, {
     methods: ["GET", "POST"]
   }
 });
+
+initSocket(io);
 
 app.use(cors());
 app.use(express.json());
