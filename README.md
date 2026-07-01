@@ -188,6 +188,12 @@ Presentation notes are available here:
 docs/presentation/hackathon-pitch.md
 ```
 
+Final hackathon checklist:
+
+```text
+docs/checklists/hackathon-final-checklist.md
+```
+
 ---
 
 ## Dashboard
@@ -223,6 +229,8 @@ docs/ROADMAP.md
 docs/presentation/hackathon-pitch.md
 docs/architecture/system-diagram.md
 docs/architecture/system-logic.md
+docs/checklists/hackathon-final-checklist.md
+docs/github-repo-setup.md
 ```
 
 ---
@@ -313,12 +321,15 @@ DriveMind/
 │   │   ├── assets/
 │   │   ├── system-diagram.md
 │   │   └── system-logic.md
+│   ├── checklists/
+│   │   └── hackathon-final-checklist.md
 │   ├── db/
 │   ├── demo/
 │   ├── ml/
 │   ├── presentation/
 │   │   └── hackathon-pitch.md
 │   ├── ROADMAP.md
+│   ├── github-repo-setup.md
 │   ├── project-status.md
 │   └── screenshots/
 │       └── dashboard-working.png
@@ -900,10 +911,16 @@ Current MVP status:
 docs/project-status.md
 ```
 
+Final hackathon checklist:
+
+```text
+docs/checklists/hackathon-final-checklist.md
+```
+
 Current completion:
 
 ```text
-Approximately 95% complete as a hackathon and portfolio MVP.
+Approximately 95–96% complete as a hackathon and portfolio MVP.
 ```
 
 ---
