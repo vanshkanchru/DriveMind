@@ -307,6 +307,12 @@ DriveMind/
 │   └── screenshots/
 │       └── dashboard-working.png
 │
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md
+│   │   └── feature_request.md
+│   └── pull_request_template.md
+│
 ├── scripts/
 │   ├── start-ai-service.sh
 │   ├── start-backend.sh
@@ -317,6 +323,10 @@ DriveMind/
 │   ├── test-full-system.sh
 │   └── test-risky-telemetry.sh
 │
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── SECURITY.md
 ├── docker-compose.yml
 ├── README.md
 └── .gitignore
@@ -859,6 +869,20 @@ This accuracy is only for synthetic test data and should not be treated as real-
 
 ---
 
+## Community and Governance
+
+DriveMind includes standard GitHub community files:
+
+- Contributing guide: `CONTRIBUTING.md`
+- Code of conduct: `CODE_OF_CONDUCT.md`
+- Security policy: `SECURITY.md`
+- License: `LICENSE`
+- Bug report template: `.github/ISSUE_TEMPLATE/bug_report.md`
+- Feature request template: `.github/ISSUE_TEMPLATE/feature_request.md`
+- Pull request template: `.github/pull_request_template.md`
+
+---
+
 ## Current Limitations
 
 - The current telemetry data is simulated.
@@ -948,4 +972,4 @@ https://github.com/rags-git/DriveMind
 
 ## License
 
-This project is currently created for educational and hackathon purposes.
+This project is licensed under the MIT License.
