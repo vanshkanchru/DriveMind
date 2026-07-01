@@ -1,5 +1,7 @@
 const Vehicle = require("../models/Vehicle");
 const Telemetry = require("../models/Telemetry");
+const Experience = require("../models/Experience");
+const { calculateRiskFromTelemetry } = require("../services/riskService");
 
 const createTelemetry = async (req, res) => {
   try {
@@ -45,10 +47,40 @@ const createTelemetry = async (req, res) => {
       { upsert: true, new: true }
     );
 
+    const riskResult = calculateRiskFromTelemetry({
+      speed,
+      acceleration,
+      brakePressure,
+      steeringAngle,
+      laneOffset,
+      distanceToFrontVehicle,
+      weather
+    });
+
+    let savedExperience = null;
+
+    if (riskResult.riskScore >= 0.6 && riskResult.events.length > 0) {
+      savedExperience = await Experience.create({
+        vehicleId,
+        roadSegmentId,
+        weather,
+        eventType: riskResult.events[0],
+        reason: riskResult.reasons.join(", "),
+        riskScore: riskResult.riskScore,
+        confidence: riskResult.confidence,
+        recommendedAction: riskResult.recommendedAction
+      });
+    }
+
     res.status(201).json({
       success: true,
       message: "Telemetry stored successfully",
-      data: telemetry
+      data: {
+        telemetry,
+        risk: riskResult,
+        experienceCreated: savedExperience ? true : false,
+        experience: savedExperience
+      }
     });
   } catch (error) {
     res.status(500).json({
