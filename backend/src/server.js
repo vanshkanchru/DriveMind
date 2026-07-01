@@ -7,6 +7,7 @@ const { Server } = require("socket.io");
 const healthRoutes = require("./routes/healthRoutes");
 const telemetryRoutes = require("./routes/telemetryRoutes");
 const experienceRoutes = require("./routes/experienceRoutes");
+const roadRiskRoutes = require("./routes/roadRiskRoutes");
 const connectDB = require("./config/db");
 
 dotenv.config();
@@ -34,6 +35,7 @@ app.get("/", (req, res) => {
 app.use("/api/health", healthRoutes);
 app.use("/api/telemetry", telemetryRoutes);
 app.use("/api/experiences", experienceRoutes);
+app.use("/api/road-risk", roadRiskRoutes);
 
 io.on("connection", (socket) => {
   console.log("Vehicle/dashboard connected:", socket.id);
