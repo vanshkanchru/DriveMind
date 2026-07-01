@@ -279,7 +279,8 @@ DriveMind/
 │   │   ├── services/
 │   │   └── server.js
 │   ├── package.json
-│   └── .env
+│   ├── .env
+│   └── .env.example
 │
 ├── frontend/
 │   ├── src/
@@ -361,6 +362,8 @@ docs/architecture/system-diagram.md
 ## Environment Variables
 
 Create a `.env` file inside the `backend` folder.
+
+You can use `backend/.env.example` as a template.
 
 Path:
 
