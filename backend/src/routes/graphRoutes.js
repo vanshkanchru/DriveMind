@@ -1,8 +1,9 @@
 const express = require("express");
-const { getGraphOverview } = require("../controllers/graphController");
+const { getGraphOverview, getRiskClusters } = require("../controllers/graphController");
 
 const router = express.Router();
 
 router.get("/", getGraphOverview);
+router.get("/clusters", getRiskClusters);
 
 module.exports = router;
