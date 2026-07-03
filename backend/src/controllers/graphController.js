@@ -58,6 +58,53 @@ const getGraphOverview = async (req, res) => {
   }
 };
 
+const getRiskClusters = async (req, res) => {
+  const driver = getNeo4jDriver();
+
+  if (!driver) {
+    return res.status(503).json({
+      success: false,
+      message: "Neo4j driver not available"
+    });
+  }
+
+  const session = driver.session();
+
+  try {
+    const result = await session.run(
+      `
+      MATCH (r1:RoadSegment)<-[:AT]-(e1:Experience)-[:TYPE]->(ev:Event)<-[:TYPE]-(e2:Experience)-[:AT]->(r2:RoadSegment)
+      WHERE r1.roadSegmentId < r2.roadSegmentId
+      RETURN r1.roadSegmentId AS segmentA, r2.roadSegmentId AS segmentB, ev.type AS sharedRiskType, COUNT(ev) AS strength
+      ORDER BY strength DESC
+      LIMIT 10
+      `
+    );
+
+    const clusters = result.records.map((record) => ({
+      segmentA: record.get("segmentA"),
+      segmentB: record.get("segmentB"),
+      sharedRiskType: record.get("sharedRiskType"),
+      strength: record.get("strength").toNumber ? record.get("strength").toNumber() : record.get("strength")
+    }));
+
+    res.json({
+      success: true,
+      count: clusters.length,
+      data: clusters
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch risk clusters",
+      error: error.message
+    });
+  } finally {
+    await session.close();
+  }
+};
+
 module.exports = {
-  getGraphOverview
+  getGraphOverview,
+  getRiskClusters
 };
